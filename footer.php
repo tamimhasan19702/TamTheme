@@ -15,8 +15,9 @@
                           <ul>
                               <li><a href="<?php echo site_url('/blog'); ?>">Blog</a></li>
                               <li><a href="<?php echo site_url('/sample1'); ?>">Sample1</a></li>
-                              <li><a href="#">Events</a></li>
-                              <li><a href="#">Campuses</a></li>
+                              <li><a href="<?php echo site_url('/sample2'); ?>">sample2</a></li>
+                              <li><a href="<?php echo site_url('/privacy-policy'); ?>">Privacy Policy</a></li>
+                              <li><a href="<?php echo site_url('/cookie-policy'); ?>">Contact Policy</a></li>
                           </ul>
                       </nav>
                   </div>
