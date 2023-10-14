@@ -1,8 +1,8 @@
 <!-- @format -->
 
-p<!-- @format -->
+<!-- @format -->
 
-<h3>University Website Management Theme
+<h1>University Website Management Theme
 </h1>
 
 <p>This is a custom WordPress theme developed for managing university websites. The theme is designed to provide a user-friendly interface for administrators to easily update and manage content on their university website.
