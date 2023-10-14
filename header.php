@@ -19,13 +19,29 @@
             <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
             <div class="site-header__menu group">
                 <nav class="main-navigation">
+
+                    <!-- dynamic menus -->
+                    <?php
+                    // wp_nav_menu(
+                    //     array(
+                    //         'theme_location' => 'headerMenuLocation',
+                    //     )
+                    // )
+                    ?>
+
                     <ul>
-                        <li><a href="<?php echo site_url('/blog'); ?>">Blog</a></li>
+
+                        <li <?php if (is_page("blog") or wp_get_post_parent_id(0) == 29)
+                            echo 'class="current-menu-item' ?>>
+                                <a href="<?php echo site_url('/blog'); ?>">Blog</a>
+                        </li>
+
                         <li><a href="<?php echo site_url('/sample1'); ?>">sample1</a></li>
                         <li><a href="<?php echo site_url('/sample2'); ?>">sample2</a></li>
                         <li><a href="<?php echo site_url('/privacy-policy'); ?>">Privacy Policy</a></li>
                         <li><a href="<?php echo site_url('/cookie-policy'); ?>">Contact Policy</a></li>
                     </ul>
+
                 </nav>
                 <div class="site-header__util">
                     <a href="#" class="btn btn--small btn--orange float-left push-right">Login</a>
