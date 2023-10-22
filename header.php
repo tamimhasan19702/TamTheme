@@ -31,15 +31,17 @@
 
                     <ul>
 
-                        <li <?php if (is_page("blog") or wp_get_post_parent_id(0) == 29)
-                            echo 'class="current-menu-item' ?>>
+                        <li <?php if (get_post_type() == 'post')
+                            echo 'class="current-menu-item"' ?>>
                                 <a href="<?php echo site_url('/blog'); ?>">Blog</a>
                         </li>
 
                         <li><a href="<?php echo site_url('/sample1'); ?>">sample1</a></li>
                         <li><a href="<?php echo site_url('/sample2'); ?>">sample2</a></li>
                         <li><a href="<?php echo site_url('/privacy-policy'); ?>">Privacy Policy</a></li>
-                        <li><a href="<?php echo site_url('/cookie-policy'); ?>">Contact Policy</a></li>
+                        <li <?php if (is_page('cookie-policy') or wp_get_post_parent_id(0) == 61)
+                            echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/cookie-policy'); ?>">Contact
+                                Policy</a></li>
                     </ul>
 
                 </nav>
