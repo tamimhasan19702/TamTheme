@@ -36,9 +36,14 @@
                                 <a href="<?php echo site_url('/blog'); ?>">Blog</a>
                         </li>
 
-                        <li><a href="<?php echo site_url('/sample1'); ?>">sample1</a></li>
+                        <li <?php if (get_post_type() === 'event')
+                            echo 'class="current-menu-item"' ?>><a
+                                    href="<?php echo get_post_type_archive_link('event') ?>">Events</a></li>
+
                         <li><a href="<?php echo site_url('/sample2'); ?>">sample2</a></li>
+
                         <li><a href="<?php echo site_url('/privacy-policy'); ?>">Privacy Policy</a></li>
+
                         <li <?php if (is_page('cookie-policy') or wp_get_post_parent_id(0) == 61)
                             echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/cookie-policy'); ?>">Contact
                                 Policy</a></li>
