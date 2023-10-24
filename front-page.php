@@ -35,8 +35,18 @@ get_header();
 
             <div class="event-summary">
                 <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
-                    <span class="event-summary__month">Jan</span>
-                    <span class="event-summary__day">20</span>
+                    <span class="event-summary__month">
+                        <?php 
+                            $eventDate = new DateTime(get_field('event_date'));
+                            echo $eventDate->format('M');
+                            ?>
+                    </span>
+                    <span class="event-summary__day">
+                        <?php 
+                            $eventDate = new DateTime(get_field('event_date'));
+                            echo $eventDate->format('d');
+                            ?>
+                    </span>
                 </a>
                 <div class="event-summary__content">
                     <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>">
@@ -48,7 +58,7 @@ get_header();
                             if (has_excerpt()) {
                                 echo get_the_excerpt();
                             } else {
-                                wp_trim_words(get_the_content(), 18);
+                                echo wp_trim_words(get_the_content(), 18);
                             } ?>
                         <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
                     </p>
@@ -99,8 +109,10 @@ get_header();
                             if (has_excerpt()) {
                                 echo get_the_excerpt();
                             } else {
-                                wp_trim_words(get_the_content(), 18);
-                            } ?>
+                                echo wp_trim_words(get_the_content(), 18);
+                            }
+
+                            ?>
                         <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
                     </p>
                 </div>
