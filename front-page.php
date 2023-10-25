@@ -24,9 +24,12 @@ get_header();
             <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
             <?php
+
             $homapageEvents = new WP_Query([
                 'posts_per_page' => 2,
-                'post_type' => 'event'
+                'post_type' => 'event',
+                'orderby' => 'rand',
+                'order' => 'ASC',
             ]);
 
             while ($homapageEvents->have_posts()) {
