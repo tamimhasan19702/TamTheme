@@ -20,13 +20,8 @@ get_header();
 <div class="container container--narrow page-section">
     <?php
 
-    $eventQuery = new WP_Query([
-        'posts_per_page' => 5,
-        'post_type' => 'event'
-    ]);
-
-    while ($eventQuery->have_posts()) {
-        $eventQuery->the_post();
+    while (have_posts()) {
+        the_post();
         ?>
         <div class="event-summary">
             <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
@@ -57,17 +52,7 @@ get_header();
         <?php
     }
 
-    $args = array(
-        'post_type' => 'event',
-        'posts_per_page' => 4,
-        'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-    );
-
-    $query = new WP_Query($args);
-
-    if ($query->found_posts > 4) {
-        echo paginate_links();
-    }
+    echo paginate_links();
 
     ?>
 </div>
