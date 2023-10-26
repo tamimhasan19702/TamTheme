@@ -19,13 +19,24 @@ get_header();
 
 <div class="container container--narrow page-section">
     <?php
+
     while (have_posts()) {
         the_post();
         ?>
         <div class="event-summary">
             <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
-                <span class="event-summary__month">Jan</span>
-                <span class="event-summary__day">20</span>
+                <span class="event-summary__month">
+                    <?php
+                    $eventDate = new DateTime(get_field('event_date'));
+                    echo $eventDate->format('M');
+                    ?>
+                </span>
+                <span class="event-summary__day">
+                    <?php
+                    $eventDate = new DateTime(get_field('event_date'));
+                    echo $eventDate->format('d');
+                    ?>
+                </span>
             </a>
             <div class="event-summary__content">
                 <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>">
@@ -41,9 +52,9 @@ get_header();
         <?php
     }
 
+    echo paginate_links();
 
-    echo paginate_links()
-        ?>
+    ?>
 </div>
 <?php
 get_footer();
