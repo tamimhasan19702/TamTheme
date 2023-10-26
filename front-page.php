@@ -24,12 +24,21 @@ get_header();
             <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
             <?php
-
+            $today = date('Ymd');
             $homapageEvents = new WP_Query([
                 'posts_per_page' => 2,
                 'post_type' => 'event',
-                'orderby' => 'rand',
+                'meta_key' => 'event_date',
+                'orderby' => 'meta_value_num',
                 'order' => 'ASC',
+                'meta_query' => [
+                    array(
+                        'key' => 'event_date',
+                        'compare' => '>=',
+                        'value' => $today,
+                        'type' => 'numeric'
+                    )
+                ]
             ]);
 
             while ($homapageEvents->have_posts()) {
