@@ -45,14 +45,20 @@ while (have_posts()) {
             echo '<ul class="link-list min-list">';
             foreach ($relatedPrograms as $program) {
                 ?>
-                <li><a href="<?php echo get_the_permalink($program); ?>">
+
+                <li>
+                    <a href="<?php echo get_the_permalink($program); ?>">
                         <?php echo get_the_title($program); ?>
-                    </a></li>
+                    </a>
+                </li>
+
                 <?php
             }
             echo '</ul>';
 
         }
+
+
 
 
 
