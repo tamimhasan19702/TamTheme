@@ -2,26 +2,17 @@
 
 // test commit
 
-function pageBanner($args = Null)
+function pageBanner($args = NULL)
 {
-    if (!$args['title']) {
-        $args['title'] = get_the_title();
-    }
-    if (!$args['subtitle']) {
-        $args['subtitle'] = the_field('page_banner_subtitle');
-    }
-    if ($args['photo']) {
-        if (get_field('page_banner_background')) {
-            $args['photo'] = get_field('page_banner_background')['sizes']['pageBanner'];
-        } else {
-            $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
-        }
-    }
+    $args['title'] = $args['title'] ?? get_the_title();
+    $args['subtitle'] = $args['subtitle'] ?? the_field('page_banner_subtitle');
+    $args['photo'] = $args['photo'] ?? (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
+
     <div class="page-banner">
-        <div class="page-banner__bg-image" style="background-image: url(<?php
-        echo $args['photo'];
-        ?>)"></div>
+        <div class="page-banner__bg-image" style="background-image: url(
+        <?php echo $args['photo'] ?>
+    )"></div>
         <div class="page-banner__content container container--narrow">
             <h1 class="page-banner__title">
                 <?php echo $args['title'] ?>
@@ -34,6 +25,8 @@ function pageBanner($args = Null)
         </div>
     </div>
     <?php
+
+
 }
 
 function university_files()

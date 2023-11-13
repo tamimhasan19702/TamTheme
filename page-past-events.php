@@ -4,7 +4,7 @@ pageBanner(
     array(
         'title' => 'Past events',
         'subtitle' => 'A recap of our past events',
-        'photo' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Flandscapes&psig=AOvVaw0GtyQB3lAbvJ1I-8yw4hdf&ust=1699881199995000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCOiy7YjFvoIDFQAAAAAdAAAAABAE',
+
     )
 );
 ?>
