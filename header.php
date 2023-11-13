@@ -16,8 +16,11 @@
             </h1>
             <span class="js-search-trigger site-header__search-trigger"><i class="fa fa-search"
                     aria-hidden="true"></i></span>
+
             <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
+
             <div class="site-header__menu group">
+
                 <nav class="main-navigation">
 
                     <!-- dynamic menus -->
@@ -57,6 +60,7 @@
                     </ul>
 
                 </nav>
+
                 <div class="site-header__util">
                     <a href="#" class="btn btn--small btn--orange float-left push-right">Login</a>
                     <a href="#" class="btn btn--small btn--dark-orange float-left">Sign Up</a>

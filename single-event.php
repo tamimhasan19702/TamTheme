@@ -3,19 +3,9 @@ get_header();
 
 while (have_posts()) {
     the_post();
+    pageBanner();
     ?>
-    <div class="page-banner">
-        <div class="page-banner__bg-image"
-            style="background-image: url(<?php echo get_theme_file_uri('images/ocean.jpg') ?>)"></div>
-        <div class="page-banner__content container container--narrow">
-            <h1 class="page-banner__title">
-                <?php the_title(); ?>
-            </h1>
-            <div class="page-banner__intro">
-                <p>Don't Forget to Replace me later</p>
-            </div>
-        </div>
-    </div>
+
 
     <div class="container container--narrow page-section">
 
@@ -41,8 +31,9 @@ while (have_posts()) {
         if ($relatedPrograms) {
 
             echo '<hr class="section-break">';
-            echo '<h2 class="headline headline--medium">Related Programs</h2>';
+            echo '<h2 class="headline headline--medium">Related Programs(s)</h2>';
             echo '<ul class="link-list min-list">';
+
             foreach ($relatedPrograms as $program) {
                 ?>
 
