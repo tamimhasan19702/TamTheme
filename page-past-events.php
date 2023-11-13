@@ -4,7 +4,6 @@ pageBanner(
     array(
         'title' => 'Past events',
         'subtitle' => 'A recap of our past events',
-
     )
 );
 ?>
