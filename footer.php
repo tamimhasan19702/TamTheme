@@ -1,5 +1,5 @@
 <footer class="site-footer">
-    <div class="site-footer__inner container ">
+    <div class="site-footer__inner container container--narrow">
         <div class="group">
             <div class="site-footer__col-one">
                 <h1 class="school-logo-text school-logo-text--alt-color">

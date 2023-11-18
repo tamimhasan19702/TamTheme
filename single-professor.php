@@ -2,8 +2,8 @@
 get_header();
 
 while (have_posts()) {
-    pageBanner();
     the_post();
+    pageBanner();
     ?>
 
 
@@ -55,6 +55,7 @@ while (have_posts()) {
 
     <?php
 }
+
 
 
 get_footer();
