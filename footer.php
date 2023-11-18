@@ -1,5 +1,5 @@
 <footer class="site-footer">
-    <div class="site-footer__inner container container--narrow">
+    <div class="site-footer__inner container ">
         <div class="group">
             <div class="site-footer__col-one">
                 <h1 class="school-logo-text school-logo-text--alt-color">
@@ -17,7 +17,7 @@
                         // wp_nav_menu([
                         //     'theme_location' => 'footerLocationOne',
                         // ])
-                            ?>
+                        ?>
 
                         <ul>
                             <li><a href="<?php echo site_url('/blog'); ?>">Blog</a></li>
@@ -39,7 +39,7 @@
                             // wp_nav_menu([
                             //     'theme_location' => 'footerLocationTwo',
                             // ])
-                                ?>
+                            ?>
 
                             <li><a href="#">Legal</a></li>
                             <li><a href="#">Privacy</a></li>

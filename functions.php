@@ -1,12 +1,11 @@
 <?php
 
-// test commit
 
 function pageBanner($args = NULL)
 {
-    $args['title'] = $args['title'] ?? get_the_title();
-    $args['subtitle'] = $args['subtitle'] ?? the_field('page_banner_subtitle');
-    $args['photo'] = $args['photo'] ?? (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
+    $args['title'] = isset($args['title']) ? $args['title'] : get_the_title();
+    $args['subtitle'] = isset($args['subtitle']) ? $args['subtitle'] : get_field('page_banner_subtitle');
+    $args['photo'] = isset($args['photo']) ? $args['photo'] : (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
 
 <div class="page-banner">
@@ -19,7 +18,7 @@ function pageBanner($args = NULL)
         </h1>
         <div class="page-banner__intro">
             <p>
-                <!-- <?php echo $args['subtitle'] ?> -->
+                <?php echo $args['subtitle'] ?>
             </p>
         </div>
     </div>
