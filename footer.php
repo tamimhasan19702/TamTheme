@@ -17,7 +17,7 @@
                         // wp_nav_menu([
                         //     'theme_location' => 'footerLocationOne',
                         // ])
-                            ?>
+                        ?>
 
                         <ul>
                             <li><a href="<?php echo site_url('/blog'); ?>">Blog</a></li>
@@ -39,7 +39,7 @@
                             // wp_nav_menu([
                             //     'theme_location' => 'footerLocationTwo',
                             // ])
-                                ?>
+                            ?>
 
                             <li><a href="#">Legal</a></li>
                             <li><a href="#">Privacy</a></li>
