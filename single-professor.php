@@ -2,29 +2,29 @@
 get_header();
 
 while (have_posts()) {
-    the_post();
     pageBanner();
+    the_post();
     ?>
 
 
-<div class="container container--narrow page-section">
+    <div class="container container--narrow page-section">
 
 
-    <div class="generic-content">
+        <div class="generic-content">
 
-        <div class="row group">
+            <div class="row group">
 
-            <div class="one-third">
-                <?php the_post_thumbnail('professorPortrait'); ?>
+                <div class="one-third">
+                    <?php the_post_thumbnail('professorPortrait'); ?>
+                </div>
+
+                <div class="two-thirds">
+                    <?php the_content(); ?>
+                </div>
+
             </div>
 
-            <div class="two-thirds">
-                <?php the_content(); ?>
-            </div>
-
-        </div>
-
-        <?php
+            <?php
 
             $relatedPrograms = get_field('related_programs');
 
@@ -37,13 +37,13 @@ while (have_posts()) {
                 foreach ($relatedPrograms as $program) {
                     ?>
 
-        <li>
-            <a href="<?php echo get_the_permalink($program); ?>">
-                <?php echo get_the_title($program); ?>
-            </a>
-        </li>
+                    <li>
+                        <a href="<?php echo get_the_permalink($program); ?>">
+                            <?php echo get_the_title($program); ?>
+                        </a>
+                    </li>
 
-        <?php
+                    <?php
                 }
                 echo '</ul>';
 
@@ -51,10 +51,11 @@ while (have_posts()) {
 
             ?>
 
-    </div>
+        </div>
 
-    <?php
+        <?php
 }
+
 
 get_footer();
 
