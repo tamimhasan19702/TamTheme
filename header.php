@@ -27,26 +27,30 @@
 
                         <li <?php if (get_post_type() == 'post')
                             echo 'class="current-menu-item"' ?>>
-                            <a href="<?php echo site_url('/blog'); ?>">Blog</a>
+                                <a href="<?php echo site_url('/blog'); ?>">Blog</a>
                         </li>
 
                         <li <?php if (get_post_type() === 'event')
                             echo 'class="current-menu-item"' ?>><a
-                                href="<?php echo get_post_type_archive_link('event') ?>">Events</a></li>
+                                    href="<?php echo get_post_type_archive_link('event') ?>">Events</a></li>
 
                         <li <?php if (get_post_type() === 'program')
                             echo 'class="current-menu-item"' ?>><a
-                                href="<?php echo get_post_type_archive_link('program') ?>">Programs</a></li>
+                                    href="<?php echo get_post_type_archive_link('program') ?>">Programs</a></li>
+
+                        <li <?php if (get_post_type() === 'campus')
+                            echo 'class="current-menu-item"' ?>><a
+                                    href="<?php echo get_post_type_archive_link('campus') ?>">Campus</a></li>
 
                         <li <?php if (is_page('past-events'))
-                            echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/past-events'); ?>">Past
+                            echo 'class="current-menu-item"' ?>><a
+                                    href="<?php echo site_url('/past-events'); ?>">Past
                                 Events</a></li>
 
                         <li><a href="<?php echo site_url('/privacy-policy'); ?>">Privacy Policy</a></li>
 
                         <li <?php if (is_page('cookie-policy') or wp_get_post_parent_id(0) == 61)
-                            echo 'class="current-menu-item"' ?>><a
-                                href="<?php echo site_url('/cookie-policy'); ?>">Contact
+                            echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/cookie-policy'); ?>">Contact
                                 Policy</a></li>
                     </ul>
 
