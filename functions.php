@@ -8,28 +8,29 @@ function pageBanner($args = NULL)
     $args['photo'] = isset($args['photo']) ? $args['photo'] : (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
 
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(
+    <div class="page-banner">
+        <div class="page-banner__bg-image" style="background-image: url(
         <?php echo $args['photo'] ?>
     )"></div>
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title">
-            <?php echo $args['title'] ?>
-        </h1>
-        <div class="page-banner__intro">
-            <p>
-                <?php echo $args['subtitle'] ?>
-            </p>
+        <div class="page-banner__content container container--narrow">
+            <h1 class="page-banner__title">
+                <?php echo $args['title'] ?>
+            </h1>
+            <div class="page-banner__intro">
+                <p>
+                    <?php echo $args['subtitle'] ?>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<?php
+    <?php
 
 
 }
 
 function university_files()
 {
+    wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyCnWtY2nXb2qg6bOZqj7oqQkWcS1DqCw2s', NULL, '1.0', true);
     wp_enqueue_script('main-university-js', get_theme_file_uri('/build/index.js'), ['jquery'], '1.0', true);
     wp_enqueue_style('university_main_styles', get_theme_file_uri('/build/style-index.css'));
     wp_enqueue_style('university_extra_styles', get_theme_file_uri('/build/index.css'));
@@ -77,9 +78,13 @@ function University_adjust_query($query)
     }
 }
 
+function universityMapKey($api)
+{
+    $api['key'] = 'AIzaSyCnWtY2nXb2qg6bOZqj7oqQkWcS1DqCw2s';
+    return $api;
+}
+
 add_action('wp_enqueue_scripts', 'university_files');
 add_action('after_setup_theme', 'university_features');
 add_action('pre_get_posts', 'University_adjust_query');
-
-
-?>
+add_filter('acf/fields/google_map/api', 'universityMapKey');
