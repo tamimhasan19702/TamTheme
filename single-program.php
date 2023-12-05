@@ -106,6 +106,27 @@ while (have_posts()) {
             }
         }
 
+        wp_reset_postdata();
+
+        $relatedCampuses = get_field('related_campus');
+        if ($relatedCampuses) {
+
+            echo '<hr class="section-break">';
+            echo '<h2 class="headline headline--medium">' . get_the_title() . ' is available in the following campuses:</h2>';
+
+            echo '<ul class="link-list min-list">';
+            foreach ($relatedCampuses as $campus) {
+                ?>
+                <li>
+                    <a href="<?php echo get_the_permalink($campus) ?>">
+                        <?php echo get_the_title($campus) ?>
+                    </a>
+                </li>
+                <?php
+            }
+            echo '</ul>';
+        }
+
         ?>
 
 
