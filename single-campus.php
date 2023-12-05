@@ -6,40 +6,39 @@ while (have_posts()) {
     pageBanner();
     ?>
 
-<div class="container container--narrow page-section">
+    <div class="container container--narrow page-section">
 
-    <div class="metabox metabox--position-up metabox--with-home-link">
-        <p>
-            <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('campus'); ?>"><i
-                    class="fa fa-home" aria-hidden="true"></i>
-                All Campuses
-            </a> <span class="metabox__main">
-                <?php the_title(); ?>
-            </span>
-        </p>
-    </div>
-
-    <div class="generic-content">
-
-        <?php the_content() ?>
-    </div>
-
-    <!-- campus map type -->
-
-
-    <div class="acf-map">
-        <div>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35754.661314876335!2d91.79875245749197!3d22.472668465507628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd6fe9a3a4473%3A0x7836276aef538552!2sUniversity%20of%20Chittagong!5e1!3m2!1sen!2sbd!4v1701613237739!5m2!1sen!2sbd"
-                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+        <div class="metabox metabox--position-up metabox--with-home-link">
+            <p>
+                <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('campus'); ?>"><i
+                        class="fa fa-home" aria-hidden="true"></i>
+                    All Campuses
+                </a> <span class="metabox__main">
+                    <?php the_title(); ?>
+                </span>
+            </p>
         </div>
-        </a>
-    </div>
+
+        <div class="generic-content">
+
+            <?php the_content() ?>
+        </div>
+
+        <!-- campus map type -->
+
+        <div class="acf-map">
+            <div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35754.661314876335!2d91.79875245749197!3d22.472668465507628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd6fe9a3a4473%3A0x7836276aef538552!2sUniversity%20of%20Chittagong!5e1!3m2!1sen!2sbd!4v1701613237739!5m2!1sen!2sbd"
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+            </a>
+        </div>
 
 
-    <?php
+        <?php
         $relatedProfessors = new WP_Query([
             'posts_per_page' => -1,
             'post_type' => 'professor',
@@ -64,19 +63,19 @@ while (have_posts()) {
             while ($relatedProfessors->have_posts()) {
                 $relatedProfessors->the_post();
                 ?>
-    <li class="professor-card__list-item">
+                <li class="professor-card__list-item">
 
-        <a class="professor-card" href="<?php the_permalink(); ?>">
+                    <a class="professor-card" href="<?php the_permalink(); ?>">
 
-            <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape'); ?>">
+                        <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape'); ?>">
 
-            <span class="professor-card__name">
-                <?php the_title(); ?>
-            </span>
+                        <span class="professor-card__name">
+                            <?php the_title(); ?>
+                        </span>
 
-        </a>
-    </li>
-    <?php
+                    </a>
+                </li>
+                <?php
             }
             echo '</ul>';
         }
@@ -124,9 +123,9 @@ while (have_posts()) {
 
 
 
-</div>
+    </div>
 
-<?php
+    <?php
 }
 
 get_footer();
