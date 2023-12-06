@@ -8,22 +8,22 @@ function pageBanner($args = NULL)
     $args['photo'] = isset($args['photo']) ? $args['photo'] : (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
 
-    <div class="page-banner">
-        <div class="page-banner__bg-image" style="background-image: url(
+<div class="page-banner">
+    <div class="page-banner__bg-image" style="background-image: url(
         <?php echo $args['photo'] ?>
     )"></div>
-        <div class="page-banner__content container container--narrow">
-            <h1 class="page-banner__title">
-                <?php echo $args['title'] ?>
-            </h1>
-            <div class="page-banner__intro">
-                <p>
-                    <?php echo $args['subtitle'] ?>
-                </p>
-            </div>
+    <div class="page-banner__content container container--narrow">
+        <h1 class="page-banner__title">
+            <?php echo $args['title'] ?>
+        </h1>
+        <div class="page-banner__intro">
+            <p>
+                <?php echo $args['subtitle'] ?>
+            </p>
         </div>
     </div>
-    <?php
+</div>
+<?php
 
 
 }
@@ -41,11 +41,9 @@ function university_files()
 function university_features()
 {
     // adding menu locations to the wordpress theme
-    // register_nav_menu('headerMenuLocation', 'Header Menu Location');
-    // register_nav_menu('footerLocationOne', 'Footer Location One');
-    // register_nav_menu('footerLocationTwo', 'Footer Location Two');
-
-
+    register_nav_menu('headerMenuLocation', 'Header Menu Location');
+    register_nav_menu('footerLocationOne', 'Footer Location One');
+    register_nav_menu('footerLocationTwo', 'Footer Location Two');
 
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');

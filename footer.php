@@ -82,7 +82,7 @@
 </footer>
 
 
-<div class="search-overlay">
+<div class="search-overlay ">
     <div class="search-overlay__top">
         <div class="container">
             <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
