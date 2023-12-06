@@ -23,7 +23,7 @@
 
                 <nav class="main-navigation">
 
-                    <!-- <ul>
+                    <ul>
 
                         <li <?php if (get_post_type() == 'post')
                             echo 'class="current-menu-item"' ?>>
@@ -52,13 +52,9 @@
                         <li <?php if (is_page('cookie-policy') or wp_get_post_parent_id(0) == 61)
                             echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/cookie-policy'); ?>">Contact
                                 Policy</a></li>
-                    </ul> -->
+                    </ul>
 
-                    <?php
-                    wp_nav_menu([
-                        'theme_location' => 'headerMenuLocation',
-                    ])
-                        ?>
+
                 </nav>
 
                 <div class="site-header__util">

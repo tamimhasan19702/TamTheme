@@ -1,6 +1,6 @@
 /** @format */
 
-// import "../css/style.scss";
+import "../css/style.scss";
 
 // Our modules / classes
 import MobileMenu from "./modules/MobileMenu";
@@ -12,6 +12,6 @@ import Search from "./modules/Search";
 const mobileMenu = new MobileMenu();
 const heroSlider = new HeroSlider();
 const googleMap = new GoogleMap();
-const Search = new Search();
+const search = new Search();
 
-alert("chittagong");
+alert("monti");
