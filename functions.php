@@ -8,29 +8,29 @@ function pageBanner($args = NULL)
     $args['photo'] = isset($args['photo']) ? $args['photo'] : (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
 
-    <div class="page-banner">
-        <div class="page-banner__bg-image" style="background-image: url(
+<div class="page-banner">
+    <div class="page-banner__bg-image" style="background-image: url(
         <?php echo $args['photo'] ?>
     )"></div>
-        <div class="page-banner__content container container--narrow">
-            <h1 class="page-banner__title">
-                <?php echo $args['title'] ?>
-            </h1>
-            <div class="page-banner__intro">
-                <p>
-                    <?php echo $args['subtitle'] ?>
-                </p>
-            </div>
+    <div class="page-banner__content container container--narrow">
+        <h1 class="page-banner__title">
+            <?php echo $args['title'] ?>
+        </h1>
+        <div class="page-banner__intro">
+            <p>
+                <?php echo $args['subtitle'] ?>
+            </p>
         </div>
     </div>
-    <?php
+</div>
+<?php
 
 
 }
 
 function university_files()
 {
-    wp_enqueue_script('main-university-js', get_theme_file_uri('/src/index.js'), ['jquery'], '1.0', true);
+    wp_enqueue_script('main-university-js', get_theme_file_uri('/dist/main.js'), ['jquery'], '1.0', true);
     wp_enqueue_script('googleMap', '', NULL, '1.0', true);
     wp_enqueue_style('university_main_styles', get_theme_file_uri('/css/style.css'));
     wp_enqueue_style('university_extra_styles', get_theme_file_uri('/css/style.css.map'));

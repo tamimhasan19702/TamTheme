@@ -1,4 +1,9 @@
-/* 3rd party packages */
+/**
+ * 3rd party packages
+ *
+ * @format
+ */
+
 @import "normalize.css";
 @import "../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
 
@@ -28,3 +33,10 @@
 @import "modules/link-list";
 @import "modules/metabox";
 @import "modules/post-item";
+
+body {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}

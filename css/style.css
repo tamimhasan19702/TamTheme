@@ -1,4 +1,8 @@
-/* 3rd party packages */
+/**
+ * 3rd party packages
+ *
+ * @format
+ */
 @import "normalize.css";
 @import "../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
 /* SASS and Global'ish Stuff */
@@ -1611,4 +1615,11 @@ body.admin-bar .search-overlay {
 .post-item:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
+}
+
+body {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
 }/*# sourceMappingURL=style.css.map */
