@@ -1,4 +1,5 @@
 /** @format */
+import $ from "jquery";
 
 class Search {
   // discribe and create/initialize our object
