@@ -1,7 +1,6 @@
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./css/style.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************/
 /* 3rd party packages */
+@import "normalize.css";
+@import "../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
 /* SASS and Global'ish Stuff */
 body {
   color: #333;
@@ -1612,6 +1611,4 @@ body.admin-bar .search-overlay {
 .post-item:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
-}
-
-/*# sourceMappingURL=style-index.css.map*/
+}/*# sourceMappingURL=style.css.map */
