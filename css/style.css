@@ -1131,6 +1131,7 @@ body.login {
   background-color: #fff;
 }
 
+/** @format */
 .search-overlay {
   overflow-y: auto;
   overflow-x: hidden;
@@ -1165,12 +1166,12 @@ body.admin-bar .search-overlay {
 }
 .search-overlay__icon {
   margin-right: 10px;
-  font-size: 1.8rem;
+  font-size: 1.5rem !important;
   color: #F95738;
 }
 @media (min-width: 960px) {
   .search-overlay__icon {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
 }
 .search-overlay--active {
@@ -1190,7 +1191,7 @@ body.admin-bar .search-overlay {
   position: absolute;
   top: 13px;
   right: 16px;
-  font-size: 2.1rem;
+  font-size: 2.1rem !important;
   cursor: pointer;
   transition: all 0.3s;
   background-color: #fff;
@@ -1200,13 +1201,13 @@ body.admin-bar .search-overlay {
 @media (min-width: 530px) {
   .search-overlay__close {
     top: 18px;
-    font-size: 2.1rem;
+    font-size: 2.1rem !important;
   }
 }
 @media (min-width: 960px) {
   .search-overlay__close {
     top: 26px;
-    font-size: 2.8rem;
+    font-size: 2.8rem !important;
   }
 }
 .search-overlay__close:hover {
