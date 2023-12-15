@@ -1,3 +1,5 @@
+/** @format */
+
 .search-overlay {
   overflow-y: auto;
   overflow-x: hidden;
@@ -11,7 +13,10 @@
   visibility: hidden;
   opacity: 0;
   transform: scale(1.09);
-  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    visibility 0.3s;
   box-sizing: border-box;
 
   p {
@@ -37,10 +42,10 @@
 
   &__icon {
     margin-right: 10px;
-    font-size: 1.8rem;
+    font-size: 1.5rem !important;
     color: $darkOrange;
     @include atMedium {
-      font-size: 2.5rem;
+      font-size: 2.5rem !important;
     }
   }
 
@@ -63,7 +68,7 @@
     position: absolute;
     top: 13px;
     right: 16px;
-    font-size: 2.1rem;
+    font-size: 2.1rem !important;
     cursor: pointer;
     transition: all 0.3s;
     background-color: #fff;
@@ -71,11 +76,11 @@
     line-height: 0.7;
     @include atSmall {
       top: 18px;
-      font-size: 2.1rem;
+      font-size: 2.1rem !important;
     }
     @include atMedium {
       top: 26px;
-      font-size: 2.8rem;
+      font-size: 2.8rem !important;
     }
   }
 
