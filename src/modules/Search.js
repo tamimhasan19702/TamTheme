@@ -4,23 +4,20 @@ import $ from "jquery";
 class Search {
   // discribe and create/initialize our object
   constructor() {
+    this.resultsDiv = $("#search-overlay__results");
     this.openButton = $(".js-search-trigger");
     this.closeButton = $(".search-overlay__close");
     this.searchOverlay = $(".search-overlay");
     this.searchField = $("#search-term");
     this.events();
     this.isOverlayOpen = false;
-<<<<<<< HEAD
     this.typingTimer;
-=======
->>>>>>> 69335e779202afbe81e9cb4590af0118adad99f8
   }
 
   // events
   events() {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
-<<<<<<< HEAD
     $(document).on("keydown", this.keyPressDispatcher.bind(this));
     this.searchField.on("keydown", this.typingLogic.bind(this));
   }
@@ -28,16 +25,14 @@ class Search {
   //   methods (function, action..)
   typingLogic() {
     clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(() => {
-      console.log("this is timeout setup");
-    }, 2000);
-  }
-=======
-    $(document).on("keyup", this.keyPressDispatcher.bind(this));
+    this.resultsDiv.html('<div class="spinner-loader"></div>');
+    this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
   }
 
+  getResults() {
+    this.resultsDiv.html("Imagine this is a Div...");
+  }
   //   methods (function, action..)
->>>>>>> 69335e779202afbe81e9cb4590af0118adad99f8
   keyPressDispatcher(e) {
     if (e.keyCode == 83 && !this.isOverlayOpen) {
       this.openOverlay();
