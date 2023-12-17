@@ -8,22 +8,22 @@ function pageBanner($args = NULL)
     $args['photo'] = isset($args['photo']) ? $args['photo'] : (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
 
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(
+    <div class="page-banner">
+        <div class="page-banner__bg-image" style="background-image: url(
         <?php echo $args['photo'] ?>
     )"></div>
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title">
-            <?php echo $args['title'] ?>
-        </h1>
-        <div class="page-banner__intro">
-            <p>
-                <?php echo $args['subtitle'] ?>
-            </p>
+        <div class="page-banner__content container container--narrow">
+            <h1 class="page-banner__title">
+                <?php echo $args['title'] ?>
+            </h1>
+            <div class="page-banner__intro">
+                <p>
+                    <?php echo $args['subtitle'] ?>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<?php
+    <?php
 
 
 }
@@ -36,6 +36,10 @@ function university_files()
     wp_enqueue_style('university_extra_styles', get_theme_file_uri('/css/style.css.map'));
     wp_enqueue_style('font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
+
+    wp_localize_script('main-university-js', 'universityData', [
+        'root_url' => get_site_url(),
+    ]);
 }
 
 function university_features()

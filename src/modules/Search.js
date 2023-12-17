@@ -4,42 +4,77 @@ import $ from "jquery";
 class Search {
   // discribe and create/initialize our object
   constructor() {
+    this.resultsDiv = $("#search-overlay__results");
     this.openButton = $(".js-search-trigger");
     this.closeButton = $(".search-overlay__close");
     this.searchOverlay = $(".search-overlay");
     this.searchField = $("#search-term");
+    this.isSpinnerVisible = false;
     this.events();
     this.isOverlayOpen = false;
-<<<<<<< HEAD
     this.typingTimer;
-=======
->>>>>>> 69335e779202afbe81e9cb4590af0118adad99f8
+    this.previousValue;
   }
 
   // events
   events() {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
-<<<<<<< HEAD
     $(document).on("keydown", this.keyPressDispatcher.bind(this));
-    this.searchField.on("keydown", this.typingLogic.bind(this));
+    this.searchField.on("keyup", this.typingLogic.bind(this));
   }
 
   //   methods (function, action..)
   typingLogic() {
-    clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(() => {
-      console.log("this is timeout setup");
-    }, 2000);
-  }
-=======
-    $(document).on("keyup", this.keyPressDispatcher.bind(this));
+    if (this.searchField.val() != this.previousValue) {
+      clearTimeout(this.typingTimer);
+
+      if (this.searchField.val()) {
+        if (!this.isSpinnerVisible) {
+          this.resultsDiv.html('<div class="spinner-loader"></div>');
+          this.isSpinnerVisible = true;
+        }
+        this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+      } else {
+        this.resultsDiv.html("");
+        this.isSpinnerVisible = false;
+      }
+    }
+    this.previousValue = this.searchField.val();
   }
 
+  getResults() {
+    $.getJSON(
+      universityData.root_url +
+        "/wp-json/wp/v2/posts?search=" +
+        this.searchField.val(),
+      (posts) => {
+        this.resultsDiv.html(`
+        <h1 class="search-overlay__section-title">General Information</h1>
+        ${
+          posts.length
+            ? `<ul class="link-list min-list">`
+            : `<p>No results Found for this Keyword`
+        }
+        ${posts
+          .map(
+            (item) =>
+              `<li><a href="${item.link}">${item.title.rendered}</a></li>`
+          )
+          .join("")}
+        ${posts.length ? `</ul>` : `</p>`}
+        `);
+        this.isSpinnerVisible = false;
+      }
+    );
+  }
   //   methods (function, action..)
->>>>>>> 69335e779202afbe81e9cb4590af0118adad99f8
   keyPressDispatcher(e) {
-    if (e.keyCode == 83 && !this.isOverlayOpen) {
+    if (
+      e.keyCode == 83 &&
+      !this.isOverlayOpen &&
+      !$("input, textarea").is(":focus")
+    ) {
       this.openOverlay();
     }
 
