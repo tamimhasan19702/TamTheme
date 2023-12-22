@@ -1,5 +1,14 @@
 <?php
 
+function university_custom_rest()
+{
+    register_rest_field('post', 'authorName', [
+        'get_callback' => function () {
+            return get_the_author();
+        }
+    ]);
+}
+
 
 function pageBanner($args = NULL)
 {
@@ -86,6 +95,8 @@ function universityMapKey($api)
     return $api;
 }
 
+
+add_action('rest_api_init', 'university_custom_rest');
 add_action('wp_enqueue_scripts', 'university_files');
 add_action('after_setup_theme', 'university_features');
 add_action('pre_get_posts', 'University_adjust_query');
