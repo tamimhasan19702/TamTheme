@@ -19,6 +19,12 @@
     visibility 0.3s;
   box-sizing: border-box;
 
+  &__results .row-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
   p {
     padding-top: 15px;
   }
@@ -115,4 +121,9 @@
 
 .body-no-scroll {
   overflow: hidden;
+}
+
+.search-overlay--active .search-overlay__results .row-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }

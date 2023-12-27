@@ -1148,6 +1148,11 @@ body.login {
   transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
   box-sizing: border-box;
 }
+.search-overlay__results .row-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
 .search-overlay p {
   padding-top: 15px;
 }
@@ -1243,6 +1248,11 @@ body.admin-bar .search-overlay {
 
 .body-no-scroll {
   overflow: hidden;
+}
+
+.search-overlay--active .search-overlay__results .row-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .professor-cards {
