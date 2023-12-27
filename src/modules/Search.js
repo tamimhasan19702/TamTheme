@@ -58,7 +58,7 @@ class Search {
       ${
         results.generalInfo.length
           ? `<ul class="link-list min-list">`
-          : `<p>No results Found for this Keyword`
+          : `<p>No General Information Found for this Keyword`
       }
       ${results.generalInfo
         .map(
@@ -71,12 +71,15 @@ class Search {
       ${results.generalInfo.length ? `</ul>` : `</p>`}
       </div>
       
+
+
       <div className="one-third col-md-4">
+
       <h2 class="search-overlay__section-title">Programs</h2>
       ${
         results.programs.length
           ? `<ul class="link-list min-list">`
-          : `<p>No results Found for this Keyword`
+          : `<p>No Programs Found for this Keyword. <a href="${universityData.root_url}/programs">View all the Programs here</a>`
       }
       ${results.programs
         .map((item) => `<li><a href="${item.permalink}">${item.title}</a></li>`)
@@ -87,7 +90,7 @@ class Search {
       ${
         results.professors.length
           ? `<ul class="link-list min-list">`
-          : `<p>No results Found for this Keyword`
+          : `<p>No Professors Found for this Keyword, <a href="${universityData.root_url}/professors">View all the Professors here</a>`
       }
       ${results.professors
         .map((item) => `<li><a href="${item.permalink}">${item.title}</a></li>`)
@@ -95,12 +98,15 @@ class Search {
       ${results.professors.length ? `</ul>` : `</p>`}
       </div>
      
+
+
+
       <div className="one-third col-md-4">
       <h2 class="search-overlay__section-title">Campuses</h2>
       ${
         results.campuses.length
           ? `<ul class="link-list min-list">`
-          : `<p>No results Found for this Keyword`
+          : `<p>No Campus Location Found for this Keyword. <a href="${universityData.root_url}/campuses">View all the Campuses here</a>`
       }
       ${results.campuses
         .map((item) => `<li><a href="${item.permalink}">${item.title}</a></li>`)
@@ -111,7 +117,7 @@ class Search {
       ${
         results.events.length
           ? `<ul class="link-list min-list">`
-          : `<p>No results Found for this Keyword`
+          : `<p>No Events Found for this Keyword. <a href="${universityData.root_url}/events">View all the Events here</a>`
       }
       ${results.events
         .map(
