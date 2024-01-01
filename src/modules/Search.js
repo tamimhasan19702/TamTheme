@@ -85,15 +85,34 @@ class Search {
         .map((item) => `<li><a href="${item.permalink}">${item.title}</a></li>`)
         .join("")}
       ${results.programs.length ? `</ul>` : `</p>`}
+
+
+
+
      
       <h2 class="search-overlay__section-title">Professors</h2>
       ${
         results.professors.length
           ? `<ul class="link-list min-list">`
-          : `<p>No Professors Found for this Keyword, <a href="${universityData.root_url}/professors">View all the Professors here</a>`
+          : `<p>No Professors Found for this Keyword.`
       }
       ${results.professors
-        .map((item) => `<li><a href="${item.permalink}">${item.title}</a></li>`)
+        .map(
+          (item) => `
+          <li class="professor-card__list-item">
+
+          <a class="professor-card" href="${item.permalink}">
+  
+              <img class="professor-card__image" src="${item.image}">
+  
+              <span class="professor-card__name">
+                 ${item.title}
+              </span>
+  
+          </a>
+      </li> 
+        `
+        )
         .join("")}
       ${results.professors.length ? `</ul>` : `</p>`}
       </div>
@@ -113,21 +132,48 @@ class Search {
         .join("")}
       ${results.campuses.length ? `</ul>` : `</p>`}
 
+
+
+
+
+
+
       <h2 class="search-overlay__section-title">Events</h2>
       ${
         results.events.length
-          ? `<ul class="link-list min-list">`
+          ? ` `
           : `<p>No Events Found for this Keyword. <a href="${universityData.root_url}/events">View all the Events here</a>`
       }
       ${results.events
         .map(
           (item) =>
-            `<li><a href="${item.permalink}">${item.title}</a> ${
-              item.postType == "post" ? ` by ${item.authorName}` : ``
-            }</li>`
+            `
+            <div class="event-summary">
+    <a class="event-summary__date t-center" href="${item.permalink}">
+        <span class="event-summary__month">
+            ${item.month}
+        </span>
+        <span class="event-summary__day">
+            ${item.date}
+        </span>
+    </a>
+
+    <div class="event-summary__content">
+        <h5 class="event-summary__title headline headline--tiny"><a href="${item.permalink}">
+                ${item.title}
+            </a>
+        </h5>
+        <p>
+            ${item.excerpt}
+            <a href="${item.permalink}" class="nu gray">Read more</a>
+        </p>
+    </div>
+</div>
+            
+            `
         )
         .join("")}
-      ${results.events.length ? `</ul>` : `</p>`}
+      ${results.events.length ? `` : `</p>`}
       </div>
       </div>
       `);
