@@ -64,7 +64,8 @@ function UniversitySearchResults($data)
                     'title' => get_the_title(),
                     'permalink' => get_the_permalink(),
                     'postType' => get_post_type(),
-                    'authorName' => get_the_author()
+                    'authorName' => get_the_author(),
+                    'id' => get_the_ID()
                 )
             );
         }
@@ -111,7 +112,7 @@ function UniversitySearchResults($data)
             [
                 'key' => 'related_programs',
                 'compare' => 'LIKE',
-                'value' => '"97"'
+                'value' => '"' . $results['programs'][0]['id'] . '"'
             ]
         ]
     ]);
