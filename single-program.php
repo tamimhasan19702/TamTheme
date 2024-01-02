@@ -6,26 +6,26 @@ while (have_posts()) {
     pageBanner();
     ?>
 
-<div class="container container--narrow page-section">
+    <div class="container container--narrow page-section">
 
-    <div class="metabox metabox--position-up metabox--with-home-link">
-        <p>
-            <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('program'); ?>"><i
-                    class="fa fa-home" aria-hidden="true"></i>
-                Programs Home
-            </a> <span class="metabox__main">
-                <?php the_title(); ?>
-            </span>
-        </p>
-    </div>
+        <div class="metabox metabox--position-up metabox--with-home-link">
+            <p>
+                <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('program'); ?>"><i
+                        class="fa fa-home" aria-hidden="true"></i>
+                    Programs Home
+                </a> <span class="metabox__main">
+                    <?php the_title(); ?>
+                </span>
+            </p>
+        </div>
 
-    <div class="generic-content">
+        <div class="generic-content">
 
-        <?php the_content() ?>
-    </div>
+            <?php the_field('main_body_content') ?>
+        </div>
 
 
-    <?php
+        <?php
         $relatedProfessors = new WP_Query([
             'posts_per_page' => -1,
             'post_type' => 'professor',
@@ -50,19 +50,19 @@ while (have_posts()) {
             while ($relatedProfessors->have_posts()) {
                 $relatedProfessors->the_post();
                 ?>
-    <li class="professor-card__list-item">
+                <li class="professor-card__list-item">
 
-        <a class="professor-card" href="<?php the_permalink(); ?>">
+                    <a class="professor-card" href="<?php the_permalink(); ?>">
 
-            <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape'); ?>">
+                        <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape'); ?>">
 
-            <span class="professor-card__name">
-                <?php the_title(); ?>
-            </span>
+                        <span class="professor-card__name">
+                            <?php the_title(); ?>
+                        </span>
 
-        </a>
-    </li>
-    <?php
+                    </a>
+                </li>
+                <?php
             }
             echo '</ul>';
         }
@@ -120,12 +120,12 @@ while (have_posts()) {
             echo '<ul class="link-list min-list">';
             foreach ($relatedCampuses as $campus) {
                 ?>
-    <li>
-        <a href="<?php echo get_the_permalink($campus) ?>">
-            <?php echo get_the_title($campus) ?>
-        </a>
-    </li>
-    <?php
+                <li>
+                    <a href="<?php echo get_the_permalink($campus) ?>">
+                        <?php echo get_the_title($campus) ?>
+                    </a>
+                </li>
+                <?php
             }
             echo '</ul>';
         }
@@ -134,9 +134,9 @@ while (have_posts()) {
 
 
 
-</div>
+    </div>
 
-<?php
+    <?php
 }
 
 get_footer();
