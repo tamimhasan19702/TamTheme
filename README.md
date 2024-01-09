@@ -50,8 +50,4 @@ If you encounter any issues or have questions about using the University Website
 The University Website Management Theme is released under the MIT License. You are free to use, modify, and distribute the theme in both personal and commercial projects.
 </p>
 
-Credits
-WordPress
-Bootstrap
-Font Awesome
-Please note that this is just a template and you should customize it according to the specific details of your theme.
+
