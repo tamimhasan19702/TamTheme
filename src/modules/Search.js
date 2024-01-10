@@ -1,5 +1,4 @@
 /** @format */
-import $ from "jquery";
 import axios from "axios";
 class Search {
   // discribe and create/initialize our object
@@ -16,7 +15,7 @@ class Search {
     this.typingTimer;
     this.previousValue;
   }
-
+  //this is a test commit
   // events
   events() {
     this.openButton.forEach((e) => {
@@ -207,23 +206,23 @@ class Search {
       this.closeOverlay();
     }
   }
-openOverlay() {
-  this.searchOverlay.classList.add("search-overlay--active");
-  document.body.classList.add("body-no-scroll");
-  this.searchField.value = "";
-  setTimeout(() => this.searchField.focus(), 301);
-  this.isOverlayOpen = true;
-}
+
+  openOverlay() {
+    this.searchOverlay.classList.add("search-overlay--active");
+    document.body.classList.add("body-no-scroll");
+    this.searchField.value = "";
+    setTimeout(() => this.searchField.focus(), 301);
+    this.isOverlayOpen = true;
   }
 
-closeOverlay() {
+  closeOverlay() {
     this.searchOverlay.classList.remove("search-overlay--active");
     document.body.classList.remove("body-no-scroll");
     this.isOverlayOpen = false;
-}
+  }
 
   searchOverlayHtml() {
-    $("body").append(`
+    document.querySelector("body").append(`
     <div class="search-overlay ">
     <div class="search-overlay__top">
         <div class="container">
