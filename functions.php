@@ -18,22 +18,22 @@ function pageBanner($args = NULL)
     $args['photo'] = isset($args['photo']) ? $args['photo'] : (get_field('page_banner_background') ? get_field('page_banner_background')['sizes']['pageBanner'] : get_theme_file_uri('/images/ocean.jpg'));
     ?>
 
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(
+    <div class="page-banner">
+        <div class="page-banner__bg-image" style="background-image: url(
         <?php echo $args['photo'] ?>
     )"></div>
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title">
-            <?php echo $args['title'] ?>
-        </h1>
-        <div class="page-banner__intro">
-            <p>
-                <?php echo $args['subtitle'] ?>
-            </p>
+        <div class="page-banner__content container container--narrow">
+            <h1 class="page-banner__title">
+                <?php echo $args['title'] ?>
+            </h1>
+            <div class="page-banner__intro">
+                <p>
+                    <?php echo $args['subtitle'] ?>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<?php
+    <?php
 
 
 }
@@ -96,9 +96,54 @@ function universityMapKey($api)
     return $api;
 }
 
+function redirectSubsToFrontend()
+{
+    $currentUser = wp_get_current_user();
+
+    if (count($currentUser->roles) == 1 and $currentUser->roles[0] == 'subscriber') {
+        wp_redirect(site_url('/'));
+        exit;
+    }
+}
+
+function noSubAdminBar()
+{
+    $currentUser = wp_get_current_user();
+
+    if (count($currentUser->roles) == 1 and $currentUser->roles[0] == 'subscriber') {
+        show_admin_bar(false);
+    }
+}
+
+function ourHeaderUrl()
+{
+    return esc_url(site_url('/'));
+}
+
+function OurLoginCss()
+{
+    wp_enqueue_style('university_main_styles', get_theme_file_uri('/css/style.css'));
+    wp_enqueue_style('university_extra_styles', get_theme_file_uri('/css/style.css.map'));
+    wp_enqueue_style('font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+    wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
+}
+
+
+function ourLoginTitle()
+{
+    return get_bloginfo();
+}
 
 add_action('rest_api_init', 'university_custom_rest');
 add_action('wp_enqueue_scripts', 'university_files');
 add_action('after_setup_theme', 'university_features');
 add_action('pre_get_posts', 'University_adjust_query');
 add_filter('acf/fields/google_map/api', 'universityMapKey');
+add_action('login_enqueue_scripts', 'ourLoginCss');
+//redirection subscriber accounts out of admin and onto homepage
+add_action('admin_init', 'redirectSubsToFrontend');
+add_action('wp_loaded', 'noSubAdminBar');
+
+//customize the login screen
+add_filter('login_headerurl', 'ourHeaderUrl');
+add_filter('login_headertitle', 'ourLoginTitle');
