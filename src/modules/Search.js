@@ -222,21 +222,41 @@ class Search {
   }
 
   searchOverlayHtml() {
-    document.querySelector("body").append(`
-    <div class="search-overlay ">
-    <div class="search-overlay__top">
-        <div class="container">
-            <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
-            <input type="text" class="search-term" placeholder="What are you looking for?" id="search-term">
-            <i class="fa fa-window-close search-overlay__close" aria-hidden="true"></i>
-        </div>
-    </div>
+    const searchOverlay = document.createElement("div");
+    searchOverlay.classList.add("search-overlay");
 
-    <div class="container">
-        <div id="search-overlay__results"></div>
-    </div>
-</div>
-    `);
+    const searchOverlayTop = document.createElement("div");
+    searchOverlayTop.classList.add("search-overlay__top");
+
+    const container = document.createElement("div");
+    container.classList.add("container");
+
+    const searchIcon = document.createElement("i");
+    searchIcon.classList.add("fa", "fa-search", "search-overlay__icon");
+    searchIcon.setAttribute("aria-hidden", "true");
+
+    const input = document.createElement("input");
+    input.classList.add("search-term");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "What are you looking for?");
+    input.setAttribute("id", "search-term");
+
+    const closeIcon = document.createElement("i");
+    closeIcon.classList.add("fa", "fa-window-close", "search-overlay__close");
+    closeIcon.setAttribute("aria-hidden", "true");
+
+    const results = document.createElement("div");
+    results.setAttribute("id", "search-overlay__results");
+
+    searchOverlayTop.appendChild(container);
+    container.appendChild(searchIcon);
+    container.appendChild(input);
+    container.appendChild(closeIcon);
+
+    searchOverlay.appendChild(searchOverlayTop);
+    searchOverlay.appendChild(results);
+
+    document.querySelector("body").appendChild(searchOverlay);
   }
 }
 
