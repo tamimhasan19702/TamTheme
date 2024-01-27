@@ -12,4 +12,4 @@ const mobileMenu = new MobileMenu();
 const heroSlider = new HeroSlider();
 const googleMap = new GoogleMap();
 const search = new Search();
-const mynotes = new MyNotes();
+const myNotes = new MyNotes();
