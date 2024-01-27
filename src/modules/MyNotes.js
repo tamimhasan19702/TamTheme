@@ -2,7 +2,7 @@
 
 class MyNotes {
   constructor() {
-    console.log(hi);
+    alert("hello");
   }
   events() {}
 }
