@@ -1,33 +1,28 @@
 /** @format */
-import axios from "axios";
+import $ from "jquery";
+
 class Search {
   // discribe and create/initialize our object
   constructor() {
     this.searchOverlayHtml();
-    this.resultsDiv = document.querySelector("#search-overlay__results");
-    this.openButton = document.querySelector(".js-search-trigger");
-    this.closeButton = document.querySelector(".search-overlay__close");
-    this.searchOverlay = document.querySelector(".search-overlay");
-    this.searchField = document.querySelector("#search-term");
+    this.resultsDiv = $("#search-overlay__results");
+    this.openButton = $(".js-search-trigger");
+    this.closeButton = $(".search-overlay__close");
+    this.searchOverlay = $(".search-overlay");
+    this.searchField = $("#search-term");
     this.isSpinnerVisible = false;
     this.events();
     this.isOverlayOpen = false;
     this.typingTimer;
     this.previousValue;
   }
-  //this is a test commit
+
   // events
   events() {
-    this.openButton.forEach((e) => {
-      e.addEventListener("click", (event) => {
-        event.preventDefault();
-        this.openOverlay();
-      });
-    });
-
-    this.closeButton.addEventListener("click", this.closeOverlay);
-    document.addEventListener("keydown", (e) => this.keyPressDispatcher(e));
-    this.searchField.addEventListener("keyup", this.typingLogic);
+    this.openButton.on("click", this.openOverlay.bind(this));
+    this.closeButton.on("click", this.closeOverlay.bind(this));
+    $(document).on("keydown", this.keyPressDispatcher.bind(this));
+    this.searchField.on("keyup", this.typingLogic.bind(this));
   }
 
   //   methods (function, action..)
@@ -49,19 +44,13 @@ class Search {
     this.previousValue = this.searchField.val();
   }
 
-  async getResults() {
-    try {
-      const response = await axios.get(
-        `${universityData.root_url}/wp-json/university/v1/search`,
-        {
-          params: {
-            term: this.searchField.val(),
-          },
-        }
-      );
-      const results = response.data;
-
-      this.resultsDiv.html(`
+  getResults() {
+    $.getJSON(
+      universityData.root_url +
+        "/wp-json/university/v1/search?term=" +
+        this.searchField.val(),
+      (results) => {
+        this.resultsDiv.html(`
       <div className="row-results">
    
       <div className="one-third col-md-4">
@@ -188,41 +177,41 @@ class Search {
       </div>
       </div>
       `);
-      this.isSpinnerVisible = false;
-    } catch (err) {
-      console.log(err);
-    }
+
+        this.isSpinnerVisible = false;
+      }
+    );
   }
 
   keyPressDispatcher(e) {
-    const isInputFocused =
-      document.querySelector("input, textarea") === document.activeElement;
-
-    if (e.keyCode === 83 && !this.isOverlayOpen && !isInputFocused) {
+    if (
+      e.keyCode == 83 &&
+      !this.isOverlayOpen &&
+      !$("input, textarea").is(":focus")
+    ) {
       this.openOverlay();
     }
 
-    if (e.keyCode === 27 && this.isOverlayOpen) {
+    if (e.keyCode == 27 && this.isOverlayOpen) {
       this.closeOverlay();
     }
   }
 
   openOverlay() {
-    this.searchOverlay.classList.add("search-overlay--active");
-    document.body.classList.add("body-no-scroll");
-    this.searchField.value = "";
+    this.searchOverlay.addClass("search-overlay--active");
+    $("body").addClass("body-no-scroll");
+    this.searchField.val("");
     setTimeout(() => this.searchField.focus(), 301);
     this.isOverlayOpen = true;
   }
-
   closeOverlay() {
-    this.searchOverlay.classList.remove("search-overlay--active");
-    document.body.classList.remove("body-no-scroll");
+    this.searchOverlay.removeClass("search-overlay--active");
+    $("body").removeClass("body-no-scroll");
     this.isOverlayOpen = false;
   }
 
   searchOverlayHtml() {
-    document.querySelector("body").append(`
+    $("body").append(`
     <div class="search-overlay ">
     <div class="search-overlay__top">
         <div class="container">
