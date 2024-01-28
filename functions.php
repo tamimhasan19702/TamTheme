@@ -70,17 +70,15 @@ function university_files()
         'universityData',
         [
             'root_url' => get_site_url(),
+            'nonce' => wp_create_nonce('wp_rest'),
         ]
     );
+
 }
 
 function university_features()
 {
-    // adding menu locations to the wordpress theme
-    // register_nav_menu('headerMenuLocation', 'Header Menu Location');
-    // register_nav_menu('footerLocationOne', 'Footer Location One');
-    // register_nav_menu('footerLocationTwo', 'Footer Location Two');
-
+    add_theme_support('menus');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_image_size('professorLandscape', 400, 260, true);
