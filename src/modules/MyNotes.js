@@ -5,9 +5,9 @@ class MyNotes {
     this.events();
   }
   events() {
-    $(".delete-note").on("click", this.deleteNote);
-    $(".edit-note").on("click", this.editNote.bind(this));
-    $(".update-note").on("click", this.updateNote.bind(this));
+    $("#my-notes").on("click", ".delete-note", this.deleteNote);
+    $("#my-notes").on("click", ".edit-note", this.editNote.bind(this));
+    $("#my-notes").on("click", ".update-note", this.updateNote.bind(this));
     $(".submit-note").on("click", this.createNote.bind(this));
   }
 
@@ -98,8 +98,8 @@ class MyNotes {
 
   createNote(e) {
     const ourNewPost = {
-      " title": thisNote.find(".new-note-title").val(),
-      content: thisNote.find(".new-note-body").val(),
+      title: $(".new-note-title").val(),
+      content: $(".new-note-body").val(),
       status: "publish",
     };
 
@@ -118,7 +118,7 @@ class MyNotes {
         <span class="edit-note"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</span>
         <span class="delete-note"><i class="fa fa-trash" aria-hidden="true"></i>Delete</span>
         <textarea readonly
-            class="note-body-field">${response.content.raw}</textarea>
+            class="note-body-field">${response.title.raw}</textarea>
         <span class="update-note btn btn--blue btn-small"><i class="fa fa-arrow-right"
                 aria-hidden="true"></i>Save</span>
     </li>
