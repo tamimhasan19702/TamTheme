@@ -60,6 +60,9 @@ class MyNotes {
         thisNote.slideUp();
         console.log(response);
         console.log("congrets");
+        if (response.userNoteCount < 5) {
+          $(".note-limit-message").removeClass("active");
+        }
       },
       error: (response) => {
         console.log("error");
@@ -128,6 +131,9 @@ class MyNotes {
           .slideDown();
       },
       error: (response) => {
+        if (response.responseText == "You have reached your note limit.") {
+          $(".note-limit-message").addClass("active");
+        }
         console.log("error");
         console.log(response);
       },
