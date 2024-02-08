@@ -7,24 +7,48 @@ while (have_posts()) {
     ?>
 
 
-<div class="container container--narrow page-section">
+    <div class="container container--narrow page-section">
 
 
-    <div class="generic-content">
+        <div class="generic-content">
 
-        <div class="row group">
+            <div class="row group">
 
-            <div class="one-third">
-                <?php the_post_thumbnail('professorPortrait'); ?>
+                <div class="one-third">
+                    <?php the_post_thumbnail('professorPortrait'); ?>
+                </div>
+
+                <div class="two-thirds">
+
+                    <?php
+                    $likedCount = new WP_Query(
+                        array(
+                            'post_type' => 'like',
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'liked_user_id',
+                                    'compare' => "=",
+                                    "value" => get_the_ID()
+
+                                )
+                            )
+                        )
+                    )
+                        ?>
+
+                    <span class="like-box">
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span class="like-count">
+                            <?php echo $likedCount->found_posts; ?>
+                        </span>
+                    </span>
+                    <?php the_content(); ?>
+                </div>
+
             </div>
 
-            <div class="two-thirds">
-                <?php the_content(); ?>
-            </div>
-
-        </div>
-
-        <?php
+            <?php
 
             $relatedPrograms = get_field('related_programs');
 
@@ -37,13 +61,13 @@ while (have_posts()) {
                 foreach ($relatedPrograms as $program) {
                     ?>
 
-        <li>
-            <a href="<?php echo get_the_permalink($program); ?>">
-                <?php echo get_the_title($program); ?>
-            </a>
-        </li>
+                    <li>
+                        <a href="<?php echo get_the_permalink($program); ?>">
+                            <?php echo get_the_title($program); ?>
+                        </a>
+                    </li>
 
-        <?php
+                    <?php
                 }
                 echo '</ul>';
 
@@ -51,9 +75,9 @@ while (have_posts()) {
 
             ?>
 
-    </div>
+        </div>
 
-    <?php
+        <?php
 }
 
 
