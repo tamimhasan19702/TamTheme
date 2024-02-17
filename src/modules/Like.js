@@ -22,7 +22,7 @@ class Like {
     $.ajax({
       url: universityData.root_url + "/wp-json/university/v1/manageLike",
       type: "POST",
-      data: { proffessorId: currentLikeBox.data("professor") },
+      data: { " proffessorId": currentLikeBox.data("professor") },
       success: (data) => {
         console.log(data);
       },
