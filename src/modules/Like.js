@@ -11,7 +11,7 @@ class Like {
 
   ourClickDispatcher(e) {
     const currentLikeBox = $(e.target).closest(".like-box");
-    if (currentLikeBox.data("exists") === "yes") {
+    if (currentLikeBox.attr("data-exists") === "yes") {
       this.deleteLike(currentLikeBox);
     } else {
       this.createLike(currentLikeBox);
@@ -45,10 +45,21 @@ class Like {
 
   deleteLike(currentLikeBox) {
     $.ajax({
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("X-WP-Nonce", universityData.nonce);
+      },
       url: universityData.root_url + "/wp-json/university/v1/manageLike",
       data: { like: currentLikeBox.attr("data-like") },
       type: "DELETE",
       success: (data) => {
+        currentLikeBox.attr("data-exists", "no");
+        const likeCount = parseInt(
+          currentLikeBox.find(".like-count").html(),
+          10
+        );
+        likeCount--;
+        currentLikeBox.find(".like-count").html(likeCount);
+        currentLikeBox.attr("data-like", "");
         console.log(data);
       },
       error: (data) => {

@@ -68,9 +68,15 @@ function CreateLike($data)
 ;
 ;
 
-function DeleteLike()
+function DeleteLike($data)
 {
-    return "delete Like";
+    $likedId = sanitize_text_field($data['like']);
+    if (get_current_user_id() === get_post_field('post_author', $likedId) and get_post_type($likedId) == "like") {
+        wp_delete_post($likedId, true);
+        return "Congress!! you have deleted your like";
+    } else {
+        die("You do not have permission to delete this like");
+    }
 }
 ;
 ?>

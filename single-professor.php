@@ -7,20 +7,20 @@ while (have_posts()) {
     ?>
 
 
-    <div class="container container--narrow page-section">
+<div class="container container--narrow page-section">
 
 
-        <div class="generic-content">
+    <div class="generic-content">
 
-            <div class="row group">
+        <div class="row group">
 
-                <div class="one-third">
-                    <?php the_post_thumbnail('professorPortrait'); ?>
-                </div>
+            <div class="one-third">
+                <?php the_post_thumbnail('professorPortrait'); ?>
+            </div>
 
-                <div class="two-thirds">
+            <div class="two-thirds">
 
-                    <?php
+                <?php
 
                     $likedCount = new WP_Query(
                         array(
@@ -61,20 +61,21 @@ while (have_posts()) {
 
                     ?>
 
-                    <span class="like-box" data-like="<?php echo $existQuery->posts[0]->ID; ?>"
-                        data-professor="<?php the_ID(); ?>" data-exists="<?php echo $existStatus; ?>">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                        <span class="like-count">
-                            <?php echo $likedCount->found_posts; ?>
-                        </span>
+                <span class="like-box"
+                    data-like="<?php echo $existQuery->found_posts > 0 ? $existQuery->posts[0]->ID : ''; ?>"
+                    data-professor="<?php the_ID(); ?>" data-exists="<?php echo $existStatus; ?>">
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <span class="like-count">
+                        <?php echo $likedCount->found_posts; ?>
                     </span>
-                    <?php the_content(); ?>
-                </div>
-
+                </span>
+                <?php the_content(); ?>
             </div>
 
-            <?php
+        </div>
+
+        <?php
 
             $relatedPrograms = get_field('related_programs');
 
@@ -87,13 +88,13 @@ while (have_posts()) {
                 foreach ($relatedPrograms as $program) {
                     ?>
 
-                    <li>
-                        <a href="<?php echo get_the_permalink($program); ?>">
-                            <?php echo get_the_title($program); ?>
-                        </a>
-                    </li>
+        <li>
+            <a href="<?php echo get_the_permalink($program); ?>">
+                <?php echo get_the_title($program); ?>
+            </a>
+        </li>
 
-                    <?php
+        <?php
                 }
                 echo '</ul>';
 
@@ -101,9 +102,9 @@ while (have_posts()) {
 
             ?>
 
-        </div>
+    </div>
 
-        <?php
+    <?php
 }
 
 
