@@ -26,18 +26,44 @@ function UniversityLikeRoutes()
 
 function CreateLike($data)
 {
-    $professor = sanitize_text_field($data["proffessorId"]);
+    if (is_user_logged_in()) {
 
-    wp_insert_post(
-        array(
-            "post_type" => "like",
-            "post_status" => "publish",
-            "post_title" => "Like",
-            "meta_input" => array(
-                "liked_user_id" => $professor
+        $professor = sanitize_text_field($data["proffessorId"]);
+
+        $existQuery = new WP_Query(
+            array(
+                'author' => get_current_user_id(),
+                'post_type' => 'like',
+                'meta_query' => array(
+                    array(
+                        'key' => "liked_professor_id",
+                        'compare' => "=",
+                        'value' => $professor
+                    )
+                )
             )
-        )
-    );
+        );
+
+        if ($existQuery->found_posts == 0 and get_post_type($professor) == "professor") {
+            return wp_insert_post(
+                array(
+                    "post_type" => "like",
+                    "post_status" => "publish",
+                    "post_title" => "Like",
+                    "meta_input" => array(
+                        "liked_user_id" => $professor
+                    )
+                )
+            );
+        } else {
+            die("Invalid user Id");
+        }
+
+
+    } else {
+        die("Only logged in user can like");
+    }
+
 }
 ;
 ;
