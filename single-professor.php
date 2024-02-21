@@ -21,6 +21,7 @@ while (have_posts()) {
                 <div class="two-thirds">
 
                     <?php
+
                     $likedCount = new WP_Query(
                         array(
                             'post_type' => 'like',
@@ -45,7 +46,7 @@ while (have_posts()) {
                                 'post_type' => 'like',
                                 'meta_query' => array(
                                     array(
-                                        'key' => "liked_professor_id",
+                                        'key' => "liked_user_id",
                                         'compare' => "=",
                                         'value' => get_the_ID()
                                     )
@@ -60,7 +61,8 @@ while (have_posts()) {
 
                     ?>
 
-                    <span class="like-box" data-professor="<?php the_ID(); ?>" data-exists="<?php echo $existStatus; ?>">
+                    <span class="like-box" data-like="<?php echo $existQuery->posts[0]->ID; ?>"
+                        data-professor="<?php the_ID(); ?>" data-exists="<?php echo $existStatus; ?>">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                         <i class="fa fa-heart" aria-hidden="true"></i>
                         <span class="like-count">

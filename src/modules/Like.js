@@ -27,6 +27,14 @@ class Like {
       type: "POST",
       data: { " proffessorId": currentLikeBox.data("professor") },
       success: (data) => {
+        currentLikeBox.attr("data-exists", "yes");
+        const likeCount = parseInt(
+          currentLikeBox.find(".like-count").html(),
+          10
+        );
+        likeCount++;
+        currentLikeBox.find(".like-count").html(likeCount);
+        currentLikeBox.attr("data-like", likeCount);
         console.log(data);
       },
       error: (data) => {
@@ -35,9 +43,10 @@ class Like {
     });
   }
 
-  deleteLike() {
+  deleteLike(currentLikeBox) {
     $.ajax({
       url: universityData.root_url + "/wp-json/university/v1/manageLike",
+      data: { like: currentLikeBox.attr("data-like") },
       type: "DELETE",
       success: (data) => {
         console.log(data);
